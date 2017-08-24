@@ -21,6 +21,10 @@ app.get('/bibbas', function(req, res){
    res.send('Bibba is you a B?'); 
 });
 
+app.get('/site1', function(req, res){
+    res.send('Site1 is currently not available B!')
+});
+
 // Do not change port, otherwise your app won't run on IMAD servers
 // Use 8080 only for local development if you already have apache running on 80
 
