@@ -22,7 +22,7 @@ app.get('/bibbas', function(req, res){
 });
 
 app.get('/site1', function(req, res){
-    res.send('Site1 is currently not available B!')
+  res.sendFile(path.join(__dirname, 'ui', 'site1.html'));
 });
 
 // Do not change port, otherwise your app won't run on IMAD servers
