@@ -6,10 +6,10 @@ var app = express();
 app.use(morgan('combined'));
 
 var site1 = {
-    title: 'Site1 | Json';
-    heading: 'Site1 B';
-    date: '2017, Aug 24';
-    content:`
+    title: 'Site1 | Json',
+    heading: 'Site1 B',
+    date: '2017, Aug 24',
+    content: `
         <p>
             This is content B
             fsfasf sf asf dsfas dfas fas dfasdf dsf sdfas fasdfasff
@@ -22,7 +22,8 @@ var site1 = {
         </p>
         <p>
             Last content fo now B
-        </p>`
+        </p>
+    `
 };
 
 function createTemplate (data){
@@ -55,8 +56,8 @@ function createTemplate (data){
                 </div>
             </body>
         </html>
-        `;
-        return htmlTemplate;
+    `;
+    return htmlTemplate;
 };
 
 
