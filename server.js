@@ -41,24 +41,26 @@ function createTemplate (data){
                 <link href="/ui/style.css" rel="stylesheet" />
             </head>
             <body>
-                <div>
-                    <a href="/">Home</a>
-                </div>
-                <hr/>
-                <h5>
-                    ${heading}
-                </h5>
-                <div>
-                    ${date}
-                </div>
-                <div>
-                    ${content}
+                <div class="container">
+                    <div>
+                        <a href="/">Home</a>
+                    </div>
+                    <hr/>
+                    <h5>
+                        ${heading}
+                    </h5>
+                    <div>
+                        ${date}
+                    </div>
+                    <div>
+                        ${content}
+                    </div>
                 </div>
             </body>
         </html>
     `;
     return htmlTemplate;
-};
+}
 
 
 app.get('/', function (req, res) {
