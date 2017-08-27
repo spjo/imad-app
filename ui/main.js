@@ -4,6 +4,7 @@ document.getElementById('main-text').innerHTML = "new Text";
 
 var pic = document.getElementById('madi');
 
+var marginLeft = 10;
 function moveRight (){
     marginLeft += 10;
     img.style.marginLeft = marginLeft + 'px';
