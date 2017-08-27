@@ -80,12 +80,8 @@ app.get('/bibbas', function(req, res){
    res.send('Bibba is you a B?'); 
 });
 
-app.get('/sit1', function(req, res){
-  res.send(createTemplate(site1));
-});
-
 app.get('/site1', function(req, res){
-  res.sendFile(path.join(__dirname, 'ui', 'site1.html'));
+  res.send(createTemplate(site1));
 });
 
 app.get('/site2', function(req, res){
