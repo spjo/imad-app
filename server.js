@@ -122,7 +122,7 @@ app.get('/bibbas', function(req, res){
 });
 
 app.get('/:sitename', function(req, res){
-  var sitename = req.params.sitenames;
+  var sitename = req.params.sites;
   res.send(createTemplate(sites[sitename]));
 });
 
