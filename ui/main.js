@@ -10,6 +10,6 @@ function moveRight (){
 }
 
 pic.onclick = function(){
-    var interval = setIntercal(moveRight, 100);
+    var interval = setInterval(moveRight, 100);
 //    pic.style.marginLeft = '200px';
 };
