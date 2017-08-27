@@ -7,7 +7,7 @@ var pic = document.getElementById('madi');
 var marginLeft = 10;
 function moveRight (){
     marginLeft += 10;
-    madi.style.marginLeft = marginLeft + 'px';
+    pic.style.marginLeft = marginLeft + 'px';
 }
 
 pic.onclick = function(){
