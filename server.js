@@ -5,25 +5,67 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var site1 = {
-    title: 'Site1 | Json',
-    heading: 'Site1 B',
-    date: '2017, Aug 24',
-    content: `
-        <p>
-            This is content B
-            fsfasf sf asf dsfas dfas fas dfasdf dsf sdfas fasdfasff
-        </p>
-        <p>
-            sum mo code 
-           slflaslflöasklfjkljasljfljlsklfjösaklfklösdafklöasklfjlkasjlkfjklsjdflslöjklas
-        </p>
-        <p>bib
-        </p>
-        <p>
-            Last content fo now B
-        </p>
-    `
+var sites = {
+    'site1' : {
+        title: 'Site1 | Json',
+        heading: 'Site1 B',
+        date: '2017, Aug 24',
+        content: `
+            <p>
+                This is content B
+                fsfasf sf asf dsfas dfas fas dfasdf dsf sdfas fasdfasff
+            </p>
+            <p>
+                sum mo code 
+               slflaslflöasklfjkljasljfljlsklfjösaklfklösdafklöasklfjlkasjlkfjklsjdflslöjklas
+            </p>
+            <p>bib
+            </p>
+            <p>
+                Last content fo now B
+            </p>
+        `
+    },
+    'site2' : {        
+        title: 'Site2 | Json',
+        heading: 'Site2 B',
+        date: '2017, Aug 24',
+        content: `
+            <p>
+                This is content B
+                fsfasf sf asf dsfas dfas fas dfasdf dsf sdfas fasdfasff
+            </p>
+            <p>
+                sum mo code 
+               slflaslflöasklfjkljasljfljlsklfjösaklfklösdafklöasklfjlkasjlkfjklsjdflslöjklas
+            </p>
+            <p>bib
+            </p>
+            <p>
+                Last content fo now B
+            </p>
+        `
+    },
+    'site3' : {
+        title: 'Site3 | Json',
+        heading: 'Site3 B',
+        date: '2017, Aug 24',
+        content: `
+            <p>
+                This is content B
+                fsfasf sf asf dsfas dfas fas dfasdf dsf sdfas fasdfasff
+            </p>
+            <p>
+                sum mo code 
+               slflaslflöasklfjkljasljfljlsklfjösaklfklösdafklöasklfjlkasjlkfjklsjdflslöjklas
+            </p>
+            <p>bib
+            </p>
+            <p>
+                Last content fo now B
+            </p>
+        `
+    }
 };
 
 function createTemplate (data){
@@ -79,8 +121,9 @@ app.get('/bibbas', function(req, res){
    res.send('Bibba is you a B?'); 
 });
 
-app.get('/site1', function(req, res){
-  res.send(createTemplate(site1));
+app.get('/:sitename', function(req, res){
+  var sitename = req.params.sitenames;
+  res.send(createTemplate(sites[sitename]));
 });
 
 app.get('/site2', function(req, res){
