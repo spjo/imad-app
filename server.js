@@ -104,7 +104,6 @@ function createTemplate (data){
     return htmlTemplate;
 }
 
-
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
@@ -126,13 +125,11 @@ app.get('/:sitename', function(req, res){
   res.send(createTemplate(sites[sitename]));
 });
 
-app.get('/site2', function(req, res){
-  res.sendFile(path.join(__dirname, 'ui', 'site2.html'));
-});
-
-app.get('/site3', function(req, res){
-  res.sendFile(path.join(__dirname, 'ui', 'site3.html'));
-});
+//###
+//app.get('/site2', function(req, res){
+//  res.sendFile(path.join(__dirname, 'ui', 'site2.html'));
+//});
+//###
 
 // Do not change port, otherwise your app won't run on IMAD servers
 // Use 8080 only for local development if you already have apache running on 80
