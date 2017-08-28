@@ -135,6 +135,13 @@ app.get('/:sitename', function(req, res){
   res.send(createTemplate(sites[sitename]));
 });
 
+var names = [];
+app.get('/submit-name/:name', function(req, res) {
+    var name = req.params.name;
+    names.push(name);
+    res.send(JSON.stringify(names));
+})
+
 //###
 //app.get('/site2', function(req, res){
 //  res.sendFile(path.join(__dirname, 'ui', 'site2.html'));
