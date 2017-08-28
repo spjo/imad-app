@@ -130,17 +130,18 @@ app.get('/bibbas', function(req, res){
    res.send('Bibba is you a B?'); 
 });
 
-app.get('/:sitename', function(req, res){
-  var sitename = req.params.sitename;
-  res.send(createTemplate(sites[sitename]));
-});
-
 var names = [];
 app.get('/submit-name', function(req, res) {
     var name = req.query.name;
     names.push(name);
     res.send(JSON.stringify(names));
-})
+});
+
+app.get('/:sitename', function(req, res){
+  var sitename = req.params.sitename;
+  res.send(createTemplate(sites[sitename]));
+});
+
 
 //###
 //app.get('/site2', function(req, res){
