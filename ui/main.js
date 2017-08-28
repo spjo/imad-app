@@ -14,3 +14,12 @@ pic.onclick = function(){
     var interval = setInterval(moveRight, 30);
 //    pic.style.marginLeft = '200px';
 };
+
+var counter = 0;
+var button = document.getButtonById('counter');
+button.onClick = function() {
+    
+    counter++;
+    var span = document.getElementById('span');
+    span.innerHTML = counter.toString();
+}
