@@ -13,69 +13,6 @@ var config = {
 var app = express();
 app.use(morgan('combined'));
 
-var sites = {
-    'site1' : {
-        title: 'Site1 | Json',
-        heading: 'Site1 B',
-        date: '2017, Aug 24',
-        content: `
-            <p>
-                This is content B
-                fsfasf sf asf dsfas dfas fas dfasdf dsf sdfas fasdfasff
-            </p>
-            <p>
-                sum mo code 
-               slflaslflöasklfjkljasljfljlsklfjösaklfklösdafklöasklfjlkasjlkfjklsjdflslöjklas
-            </p>
-            <p>bib
-            </p>
-            <p>
-                Last content fo now B
-            </p>
-        `
-    },
-    'site2' : {        
-        title: 'Site2 | Json',
-        heading: 'Site2 B',
-        date: '2017, Aug 24',
-        content: `
-            <p>
-                This is content B
-                fsfasf sf asf dsfas dfas fas dfasdf dsf sdfas fasdfasff
-            </p>
-            <p>
-                sum mo code 
-               slflaslflöasklfjkljasljfljlsklfjösaklfklösdafklöasklfjlkasjlkfjklsjdflslöjklas
-            </p>
-            <p>bib
-            </p>
-            <p>
-                Last content fo now B
-            </p>
-        `
-    },
-    'site3' : {
-        title: 'Site3 | Json',
-        heading: 'Site3 B',
-        date: '2017, Aug 24',
-        content: `
-            <p>
-                This is content B
-                fsfasf sf asf dsfas dfas fas dfasdf dsf sdfas fasdfasff
-            </p>
-            <p>
-                sum mo code 
-               slflaslflöasklfjkljasljfljlsklfjösaklfklösdafklöasklfjlkasjlkfjklsjdflslöjklas
-            </p>
-            <p>bib
-            </p>
-            <p>
-                Last content fo now B
-            </p>
-        `
-    }
-};
-
 function createTemplate (data){
     var title = data.title;
     var heading = data.heading;
@@ -162,7 +99,7 @@ app.get('/submit-name', function(req, res) {
 app.get('/sites/:sitename', function(req, res){
   var sitename = req.params.sitename;
   
-  pool.query("SELECT * FROM site WHERE title = '"+req.params.sitename +"'", function(err,result) {
+  pool.query("SELECT * FROM site WHERE title = $1", [req.params.sitename], function(err,result) {
       if(err){
           res.status(500).send(err.toString());
       }
