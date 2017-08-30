@@ -159,9 +159,24 @@ app.get('/submit-name', function(req, res) {
     res.send(JSON.stringify(names));
 });
 
-app.get('/:sitename', function(req, res){
+app.get('/sites/:sitename', function(req, res){
   var sitename = req.params.sitename;
-  res.send(createTemplate(sites[sitename]));
+  
+  pool.query("SELECT * FROM site WHERE title = "+req.params.sitename, function(err,result) {
+      if(err){
+          res.status(500).send(err.toString());
+      }
+      else{
+          if(result.rows.legnth === 0){
+              res.status(404).send('Article not found');
+          }
+          else{
+              var siteData = result.rows[0];
+              res.send(createTemplate(siteData));
+              
+          }
+      }
+  });
 });
 
 
