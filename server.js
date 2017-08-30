@@ -119,14 +119,14 @@ app.get('/', function (req, res) {
 
 var Pool = new Pool(config);
 app.get('/test-db', function(req, res) {
-    pool.query('SELET * FROM test', function (err. result) {
+    pool.query('SELET * FROM test', function (err, result) {
         if(err){
             res.status(500).send(err.toString());
         }
         else {
             res.send(JSON.stringify(result));
         }
-    })
+    });
 });
 
 
