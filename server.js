@@ -162,7 +162,7 @@ app.get('/submit-name', function(req, res) {
 app.get('/sites/:sitename', function(req, res){
   var sitename = req.params.sitename;
   
-  pool.query("SELECT * FROM site WHERE title = "+req.params.sitename, function(err,result) {
+  pool.query("SELECT * FROM site WHERE title = *"+req.params.sitename +"'", function(err,result) {
       if(err){
           res.status(500).send(err.toString());
       }
