@@ -4,6 +4,7 @@ var path = require('path');
 var Pool = require('pg').Pool;
 var crypto = require('crypto');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 
 var config = {
     user: 'jonatansprick85',
@@ -11,10 +12,14 @@ var config = {
     host: 'db.imad.hasura-app.io',
     port: '5432',
     password: process.env.DB_PASSWORD
-}
+};
 var app = express();
 app.use(morgan('combined'));
 app.use(bodyParser.json());
+app.use(session({
+    secret: 'ransomvalue',
+    cookie: { maxAge: 1000 * 60 * 60 * 2}
+}));
 
 function createTemplate (data){
     var title = data.title;
@@ -97,7 +102,13 @@ app.post('/login', function(req, res){
                 var salt = dbString.split('$')[2];
                 var hashedPassword = hash(password, salt);
                 if(hashedPassword === dbString){
+                    
+                    req.session.auth = {userId: result.rows[0].id};
+                    
+                    
+                    
                     res.send('User succesfully logged in B');
+                    
                 }
                 else{
                     res.send(403).send('username V password is invalid B');
@@ -107,6 +118,13 @@ app.post('/login', function(req, res){
     });
 });
 
+app.get('login-check', function(req, res){
+   if(req.session && req.session.auth && req.session.auth.userId){
+       res.send('u logged in: '+req.session.auth.userId.toString());
+   } else{
+       res.send('u not loged in');
+   }
+});
 
 var pool = new Pool(config);
 app.get('/test-db', function(req, res) {
