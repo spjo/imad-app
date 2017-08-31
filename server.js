@@ -118,7 +118,7 @@ app.post('/login', function(req, res){
     });
 });
 
-app.get('login-check', function(req, res){
+app.get('/login-check', function(req, res){
    if(req.session && req.session.auth && req.session.auth.userId){
        res.send('u logged in: '+req.session.auth.userId.toString());
    } else{
