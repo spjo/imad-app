@@ -96,7 +96,7 @@ app.post('/login', function(req, res){
                 var dbString = result.rows[0].password;
                 var salt = dbString.split('$')[2];
                 var hashedPassword = hash(password, salt);
-                if(hashedPassord === dbString){
+                if(hashedPassword === dbString){
                     res.send('User succesfully logged in B');
                 }
                 else{
